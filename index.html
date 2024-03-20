@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta http-equiv = "x-ua-compatible" content = "IE=edge">
+  <meta name = "viewport" content= "width=device-width, initial-scale=1.0">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+</head>
+
+
+<model-viewer id="color" camera-controls touch-action="pan-y" interaction-prompt="none" src="https://morshedy.in/frontend/product.glb" ar >
+
+</model-viewer>
+<div class="controls" id="color-controlss">
+  TOP :
+  <button data-color="">defualt</button>
+  <button data-color="#ff0000">Red</button>
+  <button data-color="#00ff00">Green</button>
+  <button data-color="#0000ff">Blue</button>
+</div>
+<br>
+<div class="controls" id="color-controls">
+  BOTTOM :
+  <button data-color="">defualt</button>
+  <button data-color="#ff0000">Red</button>
+  <button data-color="#00ff00">Green</button>
+  <button data-color="#0000ff">Blue</button>
+</div>
+<br>
+<div class="controls" id="all-color-controls">
+  ALL :
+  <button data-color="">defualt</button>
+  <button data-color="#ff0000">Red</button>
+  <button data-color="#00ff00">Green</button>
+  <button data-color="#0000ff">Blue</button>
+</div>
+
+
+<script>
+  const modelViewerColor = document.querySelector("model-viewer#color");
+
+  document.querySelector('#color-controls').addEventListener('click', (event) => {
+    const colorString = event.target.dataset.color;
+    const [material , mm] = modelViewerColor.model.materials;
+    material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+  });
+  document.querySelector('#color-controlss').addEventListener('click', (event) => {
+    const colorStringg = event.target.dataset.color;
+    const [material , mm] = modelViewerColor.model.materials;
+    mm.pbrMetallicRoughness.setBaseColorFactor(colorStringg);
+  });
+  document.querySelector('#all-color-controls').addEventListener('click', (event) => {
+    const colorStringgh = event.target.dataset.color;
+    const [material , mm] = modelViewerColor.model.materials;
+    material.pbrMetallicRoughness.setBaseColorFactor(colorStringgh);
+    mm.pbrMetallicRoughness.setBaseColorFactor(colorStringgh);
+  });
+</script>
+</html>
+
